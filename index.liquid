@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>{{ shop.name }}</title>
+  <style>
+    /* Base styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f0;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    h4 {
+      color: {% if theme.settings.button_color %} {{ theme.settings.badge_text_color | raw }} {% else %} #FF9F33 {% endif %};
+
+      padding: 15px 0 15px 15px;
+    }
+
+    .container {
+      width: 80%;
+      max-width: 1000px; /* Adjust for larger screens if needed */
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #fff;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .background {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .badge {
+      position: absolute;
+      width: 150px;
+      height: 150px;
+    }
+
+    .badge img {
+      width: 100%;
+      height: 100%;
+    }
+
+    .main-image img {
+      width: 100%;
+      height: auto;
+      margin-bottom: 20px;
+    }
+
+    .text-content h2 {
+      margin: 10px 0;
+      padding: 15px 0 15px 15px;
+    }
+
+    .text-content p {
+      margin: 10px 10 20px;
+    }
+
+    .button-container {
+      margin-top: 20px;
+    }
+
+    #action-button {
+      padding: 15px 60px;
+      font-size: 20px;
+      background-color: {% if theme.settings.button_color %} {{ theme.settings.button_color | raw }} {% else %} #000000 {% endif %};
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+
+    #action-button:hover {
+      background-color: #0056b3;
+    }
+
+    /* Media queries for responsiveness */
+    @media (max-width: 768px) {
+      /* Styles for smaller screens (phones, tablets) */
+      .container {
+        width: 90%;
+      }
+
+      .text-content h2,
+      .text-content p {
+        font-size: 16px;
+      }
+
+      .button-container {
+        margin-top: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    </header>
+
+  <main class="container">
+    <section class="hero">
+      <div class="badge {{ theme.settings.badge_position}}">
+        <img class="badge" src="{{ 'logo.png' | asset_url }}" alt="Doctor Badge">
+      </div>
+      <div class="main-image">
+        <img class="background" src="{{ 'bg_img.jpg' | asset_url }}" alt="Doctor Image">
+      </div>
+    </section>
+
+    <section class="about">
+      <div class="text-content">
+        <h4>Dr. Ernie Sanderson</h4>
+        <h2>Veterinarian-Approved</h2>
+        <p> 
+          All products from Dr. Ernie's are vetted and approved by a qualified veterinarian ensuring top quality care for your pet.
+        </p>
+      </div>
+      <div class="button-container">
+        <button id="action-button">View Products</button>
+      </div>
+
+      {% comment %} <div class="text-content">
+        <h4>{{ theme.settings.doctor_name | raw }}</h4>
+        <h2>{{ theme.settings.headline | raw }}</h2>
+        <p>{{ theme.settings.body_text | raw }}</p>
+      </div>
+      <div class="button-container">
+        <a href="{{ theme.settings.button_url | raw }}">
+          <button id="action-button">{{ theme.settings.button_text | raw }}</button>
+        </a>
+      </div> {% endcomment %}
+    </section>
+  </main>
+
+  <footer>
+  </footer>
+
+  <script src="{{ 'scripts.js' | asset_url }}"></script>
+</body>
+</html>
+
